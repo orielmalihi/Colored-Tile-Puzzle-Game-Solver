@@ -2,11 +2,10 @@
 public class Search_Algo {
 	
 	private State st;
-//	private String algo;
 	private boolean withTime, withOpen, hasResult = false;
-	private String path = "";
-	private int num = 0, cost = 0;
-	private long timeToGoal = 0;
+	private String path = ""; // will be given from the goal state
+	private int num = 0, cost = 0; // cost is the weight of the goal state
+	private long timeToGoal =0;
 	
 	public Search_Algo(State first, boolean time, boolean open) {
 		st = first;
@@ -33,6 +32,15 @@ public class Search_Algo {
 	public long getTime() {
 		return timeToGoal;
 	}
+	
+	public void clear() {
+		path = "";
+		num = 0;
+		cost = 0;
+		timeToGoal = 0;
+	}
+	
+	// getChilderen --> moveup and if isnt null then num++ etz..
 	
 
 }

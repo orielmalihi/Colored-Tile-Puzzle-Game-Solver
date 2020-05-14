@@ -76,9 +76,22 @@ public class ColoredTilePuzzle_AI {
 
 	}
 
-	public State getFirstState() {
-		return firstState;
+	public void solve() {
+		switch(algo) {
+		case "BFS":
+			break;
+		case "DFID":
+			break;
+		case "A*":
+			break;
+		case "IDA*":
+			break;
+		case "DFBnB":
+			break;
+		}
 	}
+
+
 
 	public void saveResult(String file) {
 		try {
@@ -112,5 +125,9 @@ public class ColoredTilePuzzle_AI {
 			System.out.println(output);
 		}
 
+	}	
+
+	public State getFirstState() {
+		return firstState;
 	}
 }

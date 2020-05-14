@@ -41,6 +41,12 @@ public class Tile {
 		return ans+")";
 	}
 	
-	
+	public boolean equals(Object obj) {
+		if(obj instanceof Tile) {
+			Tile tOther = (Tile)obj;
+			return val == tOther.val && color == tOther.color;
+		}
+		return false;
+	}
 
 }
