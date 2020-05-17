@@ -24,7 +24,8 @@ public class Ex1 {
 		mat[1][0] = new Tile(3);
 		State st = new State(mat);
 		System.out.println();
-		System.out.println(st.isGoal());
+		System.out.println(st);
+		
 		
 		
 		

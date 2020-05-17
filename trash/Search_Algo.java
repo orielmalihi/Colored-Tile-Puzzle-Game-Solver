@@ -39,8 +39,4 @@ public class Search_Algo {
 		cost = 0;
 		timeToGoal = 0;
 	}
-	
-	// getChilderen --> moveup and if isnt null then num++ etz..
-	
-
 }

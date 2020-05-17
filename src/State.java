@@ -4,6 +4,7 @@ import java.util.Date;
 public class State {
 
 	private int iteration;
+	private String id = "";
 	private int localPriority = 0; // 1 = left, 2 = up, 3 = right, 4 = down
 	private int tag;
 	private double weight;
@@ -24,8 +25,14 @@ public class State {
 				}
 			}
 		}
+		updateID();
 	}
 	
+	
+	public String getId() {
+		return id;
+	}
+
 	public int getIteration() {
 		return iteration;
 	}
@@ -108,7 +115,32 @@ public class State {
 		return true;
 	}
 	
-	// deep copy!!!
-	// equals !! (only by values and colors of the mat)
+	public State deepCopy() {
+		Tile[][] _mat = new Tile[rows][columns];
+		for(int i =0; i<rows; i++) {
+			for(int j =0; j<columns; j++) {
+				_mat[i][j] = new Tile(mat[i][j].getColor(), mat[i][j].getColor());
+			}
+		}
+		State _st = new State(_mat);
+		return _st;
+	}
+	
+	public boolean equals(Object obj) {
+		if(obj instanceof State) {
+			State sOther = (State)obj;
+			return id.equals(sOther.id);
+		}
+		return false;
+	}
+	public void updateID() {
+		id = "";
+		for(int i =0; i<rows; i++) {
+			for(int j =0; j<columns; j++) {
+				if(mat[i][j] != null)
+					id += mat[i][j].getVal() + mat[i][j].getColor();
+			}
+		}
+	}
 	// moveleft/right/up..
 }
