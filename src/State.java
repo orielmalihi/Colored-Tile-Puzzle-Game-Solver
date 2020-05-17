@@ -28,8 +28,8 @@ public class State {
 		}
 		updateID();
 	}
-	
-	
+
+
 	public String getId() {
 		return id;
 	}
@@ -41,10 +41,12 @@ public class State {
 	public void setIteration(int iteration) {
 		this.iteration = iteration;
 	}
-	
+
 
 	public String getPath() {
-		return path.substring(1);
+		if(path.length()>0)
+			return path.substring(1);
+		return "no path";
 	}
 
 	public void setPath(String path) {
@@ -58,7 +60,7 @@ public class State {
 	public void setLocalPriority(int localPriority) {
 		this.localPriority = localPriority;
 	}
-	
+
 
 	public int getiOfEmpty() {
 		return iOfEmpty;
@@ -91,7 +93,7 @@ public class State {
 	public void setWeight(double weight) {
 		this.weight = weight;
 	}
-	
+
 	public String toString() {
 		String ans = "";
 		for(int i =0; i<mat.length; i++) {
@@ -99,7 +101,7 @@ public class State {
 		}
 		return ans;
 	}
-	
+
 	public boolean isGoal() {
 		int count = 0;
 		int numOfTiles = rows*columns -1;
@@ -115,7 +117,7 @@ public class State {
 		}
 		return true;
 	}
-	
+
 	public State deepCopy() {
 		Tile[][] _mat = new Tile[rows][columns];
 		for(int i =0; i<rows; i++) {
@@ -128,7 +130,7 @@ public class State {
 		_st.path = path;
 		return _st;
 	}
-	
+
 	public boolean equals(Object obj) {
 		if(obj instanceof State) {
 			State sOther = (State)obj;
@@ -140,12 +142,27 @@ public class State {
 		id = "";
 		for(int i =0; i<rows; i++) {
 			for(int j =0; j<columns; j++) {
-				if(mat[i][j] != null)
-					id += mat[i][j].getVal() + mat[i][j].getColor();
+				if(mat[i][j] != null) {
+					String t = "";
+					switch(mat[i][j].getColor()) {
+					case 1:
+						t += "G";
+						break;
+					case 2:
+						t += "R";
+						break;
+					case 3:
+						t += "B";
+						break;
+					}
+					id += mat[i][j].getVal() + t ;
+				} else {
+					id += "-null-";
+				}
 			}
 		}
 	}
-	
+
 	public ArrayList<State> getChildren(){
 		ArrayList<State> arr = new ArrayList<State>();
 		int tabu = (localPriority+2)%4;
@@ -205,5 +222,5 @@ public class State {
 		}
 		return arr;
 	}
-	
+
 }
