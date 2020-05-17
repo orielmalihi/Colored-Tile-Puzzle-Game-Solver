@@ -1,8 +1,8 @@
 
 public class BFS_Search implements search_algorithms {
 	private State st;
+	private String path = ""; // from the goal state
 	private boolean isWithTime, isWithOpen, hasResult = false;
-	private String path = ""; // will be given from the goal state
 	private int num = 0, cost = 0; // cost is the weight of the goal state
 	private long timeToGoal =0;
 
