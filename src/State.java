@@ -89,6 +89,10 @@ public class State {
 	public int getCost() {
 		return cost;
 	}
+	
+	public void setCost(int cost) {
+		this.cost = cost;
+	}
 
 	public void setWeight(int cost) {
 		this.cost = cost;
@@ -99,7 +103,7 @@ public class State {
 		for(int i =0; i<mat.length; i++) {
 			ans += "\n"+Arrays.deepToString(mat[i]);
 		}
-	//	ans += Arrays.deepToString(mat[mat.length-1]);
+		ans += "\ncost: "+cost+ ", h(): " + h() + ", itr: "+iteration+ ", localPriority: "+localPriority+ ", path: "+ path;
 		return ans+"\n";
 	}
 
@@ -171,6 +175,9 @@ public class State {
 			for(int j =0; j<columns; j++) {
 				if(mat[i][j]!=null && mat[i][j].getVal()!= i*columns + j + 1) {
 					int number = mat[i][j].getVal();
+					int color = mat[i][j].getColor();
+					if(color == 3)
+						throw new RuntimeException("ERR: cant solve this game, got black tile on row "+i+" and column "+j);
 					int r, c;
 					if(number%columns==0) {
 						r = number/columns -1;
@@ -182,6 +189,10 @@ public class State {
 					int sumr = Math.abs(i - r);
 					int sumc = Math.abs(j - c);
 					sum += sumr + sumc;
+					if(color==2) {
+						sum *= 30;
+					}
+					
 				}
 			}
 		}

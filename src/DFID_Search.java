@@ -19,6 +19,7 @@ public class DFID_Search implements search_algorithms {
 	@Override
 	public void solve_game() {
 		// TODO Auto-generated method stub
+		if(st == null) return;
 		long startTime = new Date().getTime();
 		for(int i =1; i<Integer.MAX_VALUE; i++) {
 			Hashtable<String,State> hash = new Hashtable<String, State>();

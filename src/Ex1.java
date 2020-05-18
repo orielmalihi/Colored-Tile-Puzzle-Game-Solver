@@ -8,7 +8,7 @@ public class Ex1 {
 		
 		ColoredTilePuzzle_AI game = new ColoredTilePuzzle_AI();
 		try {
-			game.LoadGame("input-DFID.txt");
+			game.LoadGame("input-Astar.txt");
 			System.out.println(game.getFirstState());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -16,6 +16,7 @@ public class Ex1 {
 		}
 		
 		game.printResult();
+//		System.out.println("h(): "+game.getFirstState().h());
 		game.saveResult("output-test!.txt");
 		
 

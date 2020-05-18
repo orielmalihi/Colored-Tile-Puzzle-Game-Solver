@@ -73,7 +73,7 @@ public class ColoredTilePuzzle_AI {
 		}
 		firstState = new State(mat);
 		solve();
-		
+
 	}
 
 	public void solve() {
@@ -87,6 +87,8 @@ public class ColoredTilePuzzle_AI {
 			search_algo.solve_game();
 			break;
 		case "A*":
+			search_algo = new A_Star_Search(firstState, isWithTime, isWithOpen);
+			search_algo.solve_game();
 			break;
 		case "IDA*":
 			break;
