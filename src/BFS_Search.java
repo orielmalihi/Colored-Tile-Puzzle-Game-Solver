@@ -34,9 +34,9 @@ public class BFS_Search implements search_algorithms {
 			openList.remove(t.getId());
 			ArrayList<State> children = t.getChildren();
 			closedList.put(t.getId(), t);
-			num += children.size();
 			for(int i = 0; i<children.size(); i++) {
 				State son = children.get(i);
+				num++;
 				if(closedList.get(son.getId())==null && openList.get(son.getId())==null) {
 					if(son.isGoal()) {
 						cost = son.getCost();
@@ -44,7 +44,6 @@ public class BFS_Search implements search_algorithms {
 						hasResult = true;
 						long finishTime = new Date().getTime();
 						timeToGoal = finishTime - startTime;
-						num -= children.size() - (i + 1);
 						break;
 					} else {
 						queue.add(son);

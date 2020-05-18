@@ -164,6 +164,29 @@ public class State {
 			}
 		}
 	}
+	
+	public int h() {
+		int sum = 0;
+		for(int i =0; i<rows; i++) {
+			for(int j =0; j<columns; j++) {
+				if(mat[i][j]!=null && mat[i][j].getVal()!= i*columns + j + 1) {
+					int number = mat[i][j].getVal();
+					int r, c;
+					if(number%columns==0) {
+						r = number/columns -1;
+						c = columns-1;
+					} else {
+						r = number/columns;
+						c = number%columns -1;
+					}
+					int sumr = Math.abs(i - r);
+					int sumc = Math.abs(j - c);
+					sum += sumr + sumc;
+				}
+			}
+		}
+		return sum;
+	}
 
 	public ArrayList<State> getChildren(){
 		ArrayList<State> arr = new ArrayList<State>();

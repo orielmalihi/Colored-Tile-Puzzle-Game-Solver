@@ -43,13 +43,12 @@ public class DFID_Search implements search_algorithms {
 		
 		hash.put(st.getId(), st);
 		ArrayList<State> children = st.getChildren();
-		num += children.size();
 		for(int i=0; i<children.size(); i++) {
 			State son = children.get(i);
+			num++;
 			if(hash.get(son.getId())==null) {
 				boolean hasResult_t = recursive_DFID(son, limit-1, hash);
 				if(hasResult_t) {
-					num -= children.size() - (i + 1);
 					return true;
 				}
 			}
