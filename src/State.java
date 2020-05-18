@@ -97,10 +97,10 @@ public class State {
 	public String toString() {
 		String ans = "";
 		for(int i =0; i<mat.length; i++) {
-			ans += Arrays.deepToString(mat[i])+"\n";
+			ans += "\n"+Arrays.deepToString(mat[i]);
 		}
 	//	ans += Arrays.deepToString(mat[mat.length-1]);
-		return ans;
+		return ans+"\n";
 	}
 
 	public boolean isGoal() {

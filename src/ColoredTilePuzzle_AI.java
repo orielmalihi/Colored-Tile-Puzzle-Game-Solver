@@ -83,6 +83,8 @@ public class ColoredTilePuzzle_AI {
 			search_algo.solve_game();
 			break;
 		case "DFID":
+			search_algo = new DFID_Search(firstState, isWithTime, isWithOpen);
+			search_algo.solve_game();
 			break;
 		case "A*":
 			break;
