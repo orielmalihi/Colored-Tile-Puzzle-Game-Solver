@@ -8,7 +8,7 @@ public class Ex1 {
 		
 		ColoredTilePuzzle_AI game = new ColoredTilePuzzle_AI();
 		try {
-			game.LoadGame("input-IDA-Star.txt");
+			game.LoadGame("input-DFBnB.txt");
 			System.out.println(game.getFirstState());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

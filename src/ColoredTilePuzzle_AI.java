@@ -96,6 +96,8 @@ public class ColoredTilePuzzle_AI {
 			search_algo.solve_game();
 			break;
 		case "DFBnB":
+			search_algo = new DFBnB_Search(firstState, isWithTime, isWithOpen);
+			search_algo.solve_game();
 			break;
 		}
 	}
