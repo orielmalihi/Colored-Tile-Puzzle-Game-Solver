@@ -1,3 +1,8 @@
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Hashtable;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class BFS_Search implements search_algorithms {
 	private State st;
@@ -15,7 +20,37 @@ public class BFS_Search implements search_algorithms {
 	@Override
 	public void solve_game() {
 		// TODO Auto-generated method stub
-
+		if(st == null) return;
+		long startTime = new Date().getTime();
+		Queue<State> queue = new LinkedList<State>();
+		Hashtable<String,State> openList = new Hashtable<String,State>();
+		Hashtable<String,State> closedList = new Hashtable<String,State>();
+		queue.add(st);
+		openList.put(st.getId(), st);
+		while(!queue.isEmpty() && !hasResult) {
+			if(isWithOpen)
+				System.out.println("Open List: "+openList);
+			State t = queue.poll();
+			openList.remove(t.getId());
+			ArrayList<State> children = t.getChildren();
+			closedList.put(t.getId(), t);
+			num += children.size();
+			for(int i = 0; i<children.size(); i++) {
+				State son = children.get(i);
+				if(closedList.get(son.getId())==null && openList.get(son.getId())==null) {
+					if(son.isGoal()) {
+						cost = son.getCost();
+						path = son.getPath();
+						hasResult = true;
+						long finishTime = new Date().getTime();
+						timeToGoal = finishTime - startTime;
+					} else {
+						queue.add(son);
+						openList.put(son.getId(), son);
+					}
+				}
+			}
+		}
 	}
 
 	@Override

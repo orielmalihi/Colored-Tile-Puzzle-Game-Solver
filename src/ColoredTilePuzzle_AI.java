@@ -104,7 +104,7 @@ public class ColoredTilePuzzle_AI {
 				String output = search_algo.getPath()+"\n";
 				output += "Num: "+search_algo.getNum()+"\n";
 				output += "Cost: "+search_algo.getCost()+"\n";
-				if(isWithOpen)
+				if(isWithTime)
 					output += (search_algo.getTime()/1000.0)+" seconds\n";
 				writer.write(output);
 			}
@@ -122,7 +122,7 @@ public class ColoredTilePuzzle_AI {
 			String output = search_algo.getPath()+"\n";
 			output += "Num: "+search_algo.getNum()+"\n";
 			output += "Cost: "+search_algo.getCost()+"\n";
-			if(isWithOpen)
+			if(isWithTime)
 				output += (search_algo.getTime()/1000.0)+" seconds\n";
 			System.out.println(output);
 		}

@@ -97,8 +97,9 @@ public class State {
 	public String toString() {
 		String ans = "";
 		for(int i =0; i<mat.length; i++) {
-			ans += Arrays.deepToString(mat[i]) + "\n";
+			ans += Arrays.deepToString(mat[i])+"\n";
 		}
+	//	ans += Arrays.deepToString(mat[mat.length-1]);
 		return ans;
 	}
 
@@ -249,7 +250,7 @@ public class State {
 							down.cost = cost + 1;
 							break;
 						case 2: 
-							down.cost = cost + 20;
+							down.cost = cost + 30;
 							break;
 						case 3:
 							throw new RuntimeException("ERR: cant move black tile");
