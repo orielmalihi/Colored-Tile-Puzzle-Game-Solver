@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -91,6 +92,8 @@ public class ColoredTilePuzzle_AI {
 			search_algo.solve_game();
 			break;
 		case "IDA*":
+			search_algo = new IDA_Star_Search(firstState, isWithTime, isWithOpen);
+			search_algo.solve_game();
 			break;
 		case "DFBnB":
 			break;

@@ -7,7 +7,7 @@ public class State {
 	private int iteration;
 	private String id = "";
 	private int localPriority = -1; // 0 = left, 1 = up, 2 = right, 3 = down
-	private int tag;
+	private int tag = 0; // 1 = out, 0 = unexplored
 	private int cost = 0;
 	private String info = "", path = "";
 	private Tile[][] mat;

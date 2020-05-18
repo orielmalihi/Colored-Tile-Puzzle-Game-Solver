@@ -34,7 +34,7 @@ public class A_Star_Search implements search_algorithms {
 		while(!priority_queue.isEmpty() && !hasResult) {
 			itr++;
 			if(isWithOpen)
-				System.out.println("***************** Open List: **********************\n"+openList);
+				System.out.println("***************** Open List: **********************\n"+priority_queue);
 			State t = priority_queue.poll();
 			openList.remove(t.getId());
 			if(t.isGoal()) {
