@@ -1,4 +1,4 @@
 8R-11D-7L-8U
-Num: 35
+Num: 21
 Cost: 33
-0.018 seconds
+0.0 seconds

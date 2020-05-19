@@ -23,7 +23,7 @@ public class Ex1 {
 		System.out.println("Algorithm: "+game.getAlgo()+ "\nfirst state: "+game.getFirstState()+"\n***** result: *****");
 		game.printResult();
 		game.saveResult("output.txt");
-		System.out.println("\nthe result has been saved successfully in the program folder!\ngood-bye.");
+		System.out.println("the result has been saved successfully in the program folder!\ngood-bye.");
 
 	}
 
