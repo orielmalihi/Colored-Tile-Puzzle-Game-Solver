@@ -103,7 +103,7 @@ public class State {
 		for(int i =0; i<mat.length; i++) {
 			ans += "\n"+Arrays.deepToString(mat[i]);
 		}
-		ans += "\ncost: "+cost+ ", h(): " + h() + ", itr: "+iteration+ ", localPriority: "+localPriority+ ", path: "+ path;
+//		ans += "\ncost: "+cost+ ", h(): " + h() + ", itr: "+iteration+ ", localPriority: "+localPriority+ ", path: "+ path;
 		return ans+"\n";
 	}
 

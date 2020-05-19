@@ -19,7 +19,7 @@ import java.util.Arrays;
  */
 public class ColoredTilePuzzle_AI {
 
-	private String algo;
+	private String algo = "";
 	private boolean isWithTime = true, isWithOpen = true;
 	private State firstState;
 	private search_algorithms search_algo;
@@ -140,5 +140,9 @@ public class ColoredTilePuzzle_AI {
 
 	public State getFirstState() {
 		return firstState;
+	}
+	
+	public String getAlgo() {
+		return algo;
 	}
 }
