@@ -1,3 +1,6 @@
+/**
+ * this class represents a state in the colored tile puzzle game
+ */
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -106,6 +109,10 @@ public class State {
 //		ans += "\ncost: "+cost+ ", h(): " + h() + ", itr: "+iteration+ ", localPriority: "+localPriority+ ", path: "+ path;
 		return ans+"\n";
 	}
+	/**
+	 * returns true if and only if this state is a solution to this game
+	 * @return
+	 */
 
 	public boolean isGoal() {
 		int count = 0;
@@ -122,6 +129,11 @@ public class State {
 		}
 		return true;
 	}
+	
+	/**
+	 * returns deep copy of the current state
+	 * @return
+	 */
 
 	public State deepCopy() {
 		Tile[][] _mat = new Tile[rows][columns];
@@ -136,6 +148,10 @@ public class State {
 		_st.cost = cost;
 		return _st;
 	}
+	
+	/**
+	 * checks if two states are equals, returns true if their id (which needs to be uniqe) are the same
+	 */
 
 	public boolean equals(Object obj) {
 		if(obj instanceof State) {
@@ -144,6 +160,10 @@ public class State {
 		}
 		return false;
 	}
+	
+	/**
+	 * updating State id if the state was changed
+	 */
 	public void updateID() {
 		id = "";
 		for(int i =0; i<rows; i++) {
@@ -168,6 +188,13 @@ public class State {
 			}
 		}
 	}
+	
+	/**
+	 * the heuristic method - checks how many blocks (tiles) are away from their right place,
+	 * and multiple the distance with their color (for each tile!) 
+	 * eventually sums it all and returning the prediction
+	 * @return
+	 */
 	
 	public int h() {
 		int sum = 0;
@@ -198,6 +225,10 @@ public class State {
 		}
 		return sum;
 	}
+	/**
+	 * returns ArrayList of all the children of the state
+	 * @return
+	 */
 
 	public ArrayList<State> getChildren(){
 		ArrayList<State> arr = new ArrayList<State>();

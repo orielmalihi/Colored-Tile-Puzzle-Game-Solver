@@ -25,7 +25,7 @@ public class A_Star_Search implements search_algorithms {
 		// TODO Auto-generated method stub
 		if(st == null) return;
 		long startTime = new Date().getTime();
-		PriorityQueue<State> priority_queue =  new PriorityQueue<State>(new State_Comperator_Astar());
+		PriorityQueue<State> priority_queue =  new PriorityQueue<State>(new State_Comparator_Heuristic());
 		Hashtable<String,State> openList = new Hashtable<String,State>();
 		Hashtable<String,State> closedList = new Hashtable<String,State>();
 		priority_queue.add(st);

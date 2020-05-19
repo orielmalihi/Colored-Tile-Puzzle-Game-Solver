@@ -1,4 +1,8 @@
-
+/**
+ * this class represents a tile in the colored tile puzzle game
+ * @author oriel
+ *
+ */
 public class Tile {
 	
 	private int color = 1; // 1 = green, 2 = red, 3 = black
@@ -40,6 +44,9 @@ public class Tile {
 			ans += "G";
 		return ans+")";
 	}
+	/**
+	 * returns true if two tiles are equal.
+	 */
 	
 	public boolean equals(Object obj) {
 		if(obj instanceof Tile) {

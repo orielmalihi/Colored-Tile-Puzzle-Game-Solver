@@ -73,7 +73,6 @@ public class ColoredTilePuzzle_AI {
 			}
 		}
 		firstState = new State(mat);
-		solve();
 
 	}
 
@@ -103,7 +102,10 @@ public class ColoredTilePuzzle_AI {
 	}
 
 
-
+	/**
+	 * saves the result to the program folder
+	 * @param file
+	 */
 	public void saveResult(String file) {
 		try {
 			Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), "utf-8"));
@@ -123,6 +125,10 @@ public class ColoredTilePuzzle_AI {
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * prints the result to the screen
+	 */
 
 	public void printResult() {
 		if(!search_algo.isSolved()) {
@@ -136,11 +142,20 @@ public class ColoredTilePuzzle_AI {
 			System.out.println(output);
 		}
 
-	}	
+	}
+	
+	/**
+	 * returns the first state of the game
+	 * @return
+	 */
 
 	public State getFirstState() {
 		return firstState;
 	}
+	/**
+	 * returns the algorithm that was chosen to solve this game
+	 * @return
+	 */
 	
 	public String getAlgo() {
 		return algo;

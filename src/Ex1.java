@@ -1,7 +1,7 @@
+/**
+ * this class is the main class which needs to actually run and solve the game.
+ */
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Date;
-
 
 
 public class Ex1 {
@@ -13,6 +13,7 @@ public class Ex1 {
 		String path = "input.txt";
 		try {
 			game.LoadGame(path);
+			game.solve();
 			System.out.println("\nfile name: "+path);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

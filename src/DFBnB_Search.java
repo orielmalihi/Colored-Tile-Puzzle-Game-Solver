@@ -41,7 +41,7 @@ public class DFBnB_Search implements search_algorithms {
 					openList.put(t.getId(), t);
 					ArrayList<State> children = t.getChildren();
 					updateIteration(children, itr);
-					children.sort(new State_Comperator_Astar());
+					children.sort(new State_Comparator_Heuristic());
 					for(int i =0; i<children.size(); i++) {
 						num++;
 						State son = children.get(i);
