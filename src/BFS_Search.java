@@ -32,10 +32,10 @@ public class BFS_Search implements search_algorithms {
 				System.out.println("***************** Open List: **********************\n"+openList);
 			State t = queue.poll();
 			openList.remove(t.getId());
-			ArrayList<State> children = t.getChildren();
 			closedList.put(t.getId(), t);
-			for(int i = 0; i<children.size(); i++) {
-				State son = children.get(i);
+			for(int i = 0; i<4; i++) {
+				State son = t.getChild(i);
+				if(son == null) continue;
 				num++;
 				if(closedList.get(son.getId())==null && openList.get(son.getId())==null) {
 					if(son.isGoal()) {

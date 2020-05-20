@@ -40,10 +40,10 @@ public class IDA_Star_Search implements search_algorithms {
 				} else {
 					t.setTag(1);
 					openList.put(t.getId(), t);
-					ArrayList<State> children = t.getChildren();
-					for(int i =0; i<children.size(); i++) {
+					for(int i =0; i<4; i++) {
+						State son = t.getChild(i);
+						if(son == null) continue;
 						num++;
-						State son = children.get(i);
 						int f_son = son.getCost() + son.h();
 						if(f_son > threshold) {
 							minF = Math.min(minF, f_son);

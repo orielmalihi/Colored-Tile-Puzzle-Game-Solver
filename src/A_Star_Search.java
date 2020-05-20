@@ -45,12 +45,13 @@ public class A_Star_Search implements search_algorithms {
 				timeToGoal = finishTime - startTime;
 				break;
 			}
-			ArrayList<State> children = t.getChildren();
-			updateIteration(children, itr);
+
 			closedList.put(t.getId(), t);
-			for(int i =0; i<children.size(); i++) {
+			for(int i =0; i<4; i++) {
+				State son = t.getChild(i);
+				if(son == null) continue;
 				num++;
-				State son = children.get(i);
+				son.setIteration(itr);
 				if(closedList.get(son.getId())==null && openList.get(son.getId())==null) {
 					openList.put(son.getId(), son);
 					priority_queue.add(son);
@@ -95,12 +96,6 @@ public class A_Star_Search implements search_algorithms {
 	public long getTime() {
 		// TODO Auto-generated method stub
 		return timeToGoal;
-	}
-
-	public void updateIteration(ArrayList<State> arr, int itr) {
-		for(int i =0; i<arr.size(); i++) {
-			arr.get(i).setIteration(itr);
-		}
 	}
 
 }

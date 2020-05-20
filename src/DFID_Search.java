@@ -43,9 +43,9 @@ public class DFID_Search implements search_algorithms {
 		if(limit==0) return false;
 		
 		hash.put(st.getId(), st);
-		ArrayList<State> children = st.getChildren();
-		for(int i=0; i<children.size(); i++) {
-			State son = children.get(i);
+		for(int i=0; i<4; i++) {
+			State son = st.getChild(i);
+			if(son == null) continue;
 			num++;
 			if(hash.get(son.getId())==null) {
 				boolean hasResult_t = recursive_DFID(son, limit-1, hash);

@@ -232,100 +232,10 @@ public class State {
 
 	public ArrayList<State> getChildren(){
 		ArrayList<State> arr = new ArrayList<State>();
-		int tabu = (localPriority+2)%4;
 		for(int i =0; i<4; i++) {
-			if(i!=tabu || localPriority==-1) {
-				switch (i) {
-				case 0:
-					if((jOfEmpty+1)!= columns && mat[iOfEmpty][jOfEmpty+1].getColor() != 3) {
-						State left = deepCopy();
-						left.mat[left.iOfEmpty][left.jOfEmpty] = left.mat[left.iOfEmpty][left.jOfEmpty+1];
-						left.jOfEmpty++;
-						left.mat[left.iOfEmpty][left.jOfEmpty] = null;
-						left.localPriority = 0;
-						left.path += "-"+left.mat[left.iOfEmpty][left.jOfEmpty-1].getVal()+"L";
-						switch(left.mat[left.iOfEmpty][left.jOfEmpty-1].getColor()) {
-						case 1:
-							left.cost = cost + 1;
-							break;
-						case 2: 
-							left.cost = cost + 20;
-							break;
-						case 3:
-							throw new RuntimeException("ERR: cant move black tile");
-						}
-						left.updateID();
-						arr.add(left);
-					}
-					break;
-				case 1:
-					if((iOfEmpty+1)!= rows && mat[iOfEmpty+1][jOfEmpty].getColor() != 3) {
-						State up = deepCopy();
-						up.mat[up.iOfEmpty][up.jOfEmpty] = up.mat[up.iOfEmpty+1][up.jOfEmpty];
-						up.iOfEmpty++;
-						up.mat[up.iOfEmpty][up.jOfEmpty] = null;
-						up.localPriority = 1;
-						up.path += "-"+up.mat[up.iOfEmpty-1][up.jOfEmpty].getVal()+"U";
-						switch(up.mat[up.iOfEmpty-1][up.jOfEmpty].getColor()) {
-						case 1:
-							up.cost = cost + 1;
-							break;
-						case 2: 
-							up.cost = cost + 20;
-							break;
-						case 3:
-							throw new RuntimeException("ERR: cant move black tile");
-						}
-						up.updateID();
-						arr.add(up);
-					}
-					break;
-				case 2:
-					if(jOfEmpty!=0 && mat[iOfEmpty][jOfEmpty-1].getColor() != 3) {
-						State right = deepCopy();
-						right.mat[right.iOfEmpty][right.jOfEmpty] = right.mat[right.iOfEmpty][right.jOfEmpty-1];
-						right.jOfEmpty--;
-						right.mat[right.iOfEmpty][right.jOfEmpty] = null;
-						right.localPriority = 2;
-						right.path += "-"+right.mat[right.iOfEmpty][right.jOfEmpty+1].getVal()+"R";
-						switch(right.mat[right.iOfEmpty][right.jOfEmpty+1].getColor()) {
-						case 1:
-							right.cost = cost + 1;
-							break;
-						case 2: 
-							right.cost = cost + 20;
-							break;
-						case 3:
-							throw new RuntimeException("ERR: cant move black tile");
-						}
-						right.updateID();
-						arr.add(right);
-					}
-					break;
-				case 3:
-					if(iOfEmpty != 0 && mat[iOfEmpty-1][jOfEmpty].getColor() != 3) {
-						State down = deepCopy();
-						down.mat[down.iOfEmpty][down.jOfEmpty] = down.mat[down.iOfEmpty-1][down.jOfEmpty];
-						down.iOfEmpty--;
-						down.mat[down.iOfEmpty][down.jOfEmpty] = null;
-						down.localPriority = 3;
-						down.path += "-"+down.mat[down.iOfEmpty+1][down.jOfEmpty].getVal()+"D";
-						switch(down.mat[down.iOfEmpty+1][down.jOfEmpty].getColor()) {
-						case 1:
-							down.cost = cost + 1;
-							break;
-						case 2: 
-							down.cost = cost + 30;
-							break;
-						case 3:
-							throw new RuntimeException("ERR: cant move black tile");
-						}
-						down.updateID();
-						arr.add(down);
-					}
-					break;
-				}
-			}
+			State son = this.getChild(i);
+			if(son!=null)
+				arr.add(son);
 		}
 		return arr;
 	}
