@@ -44,7 +44,7 @@ public class BFS_Search implements search_algorithms {
 						hasResult = true;
 						long finishTime = new Date().getTime();
 						timeToGoal = finishTime - startTime;
-						break;
+						return;
 					} else {
 						queue.add(son);
 						openList.put(son.getId(), son);

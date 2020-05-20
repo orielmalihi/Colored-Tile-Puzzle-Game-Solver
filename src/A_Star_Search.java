@@ -43,7 +43,7 @@ public class A_Star_Search implements search_algorithms {
 				hasResult = true;
 				long finishTime = new Date().getTime();
 				timeToGoal = finishTime - startTime;
-				break;
+				return;
 			}
 
 			closedList.put(t.getId(), t);
