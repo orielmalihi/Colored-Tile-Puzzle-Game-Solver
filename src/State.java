@@ -92,7 +92,7 @@ public class State {
 	public int getCost() {
 		return cost;
 	}
-	
+
 	public void setCost(int cost) {
 		this.cost = cost;
 	}
@@ -106,7 +106,7 @@ public class State {
 		for(int i =0; i<mat.length; i++) {
 			ans += "\n"+Arrays.deepToString(mat[i]);
 		}
-//		ans += "\ncost: "+cost+ ", h(): " + h() + ", itr: "+iteration+ ", localPriority: "+localPriority+ ", path: "+ path;
+		//		ans += "\ncost: "+cost+ ", h(): " + h() + ", itr: "+iteration+ ", localPriority: "+localPriority+ ", path: "+ path;
 		return ans+"\n";
 	}
 	/**
@@ -129,7 +129,7 @@ public class State {
 		}
 		return true;
 	}
-	
+
 	/**
 	 * returns deep copy of the current state
 	 * @return
@@ -148,7 +148,7 @@ public class State {
 		_st.cost = cost;
 		return _st;
 	}
-	
+
 	/**
 	 * checks if two states are equals, returns true if their id (which needs to be uniqe) are the same
 	 */
@@ -160,7 +160,7 @@ public class State {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * updating State id if the state was changed
 	 */
@@ -188,14 +188,14 @@ public class State {
 			}
 		}
 	}
-	
+
 	/**
 	 * the heuristic method - checks how many blocks (tiles) are away from their right place,
 	 * and multiple the distance with their color (for each tile!) 
 	 * eventually sums it all and returning the prediction
 	 * @return
 	 */
-	
+
 	public int h() {
 		int sum = 0;
 		for(int i =0; i<rows; i++) {
@@ -219,7 +219,7 @@ public class State {
 					if(color==2) {
 						sum *= 30;
 					}
-					
+
 				}
 			}
 		}
@@ -330,4 +330,104 @@ public class State {
 		return arr;
 	}
 
+	public State getChild(int priority) {
+		if(localPriority != -1 && ((localPriority+2)%4)==priority) return null;
+
+		switch (priority) {
+		case 0:
+			if((jOfEmpty+1)!= columns && mat[iOfEmpty][jOfEmpty+1].getColor() != 3) {
+				State left = deepCopy();
+				left.mat[left.iOfEmpty][left.jOfEmpty] = left.mat[left.iOfEmpty][left.jOfEmpty+1];
+				left.jOfEmpty++;
+				left.mat[left.iOfEmpty][left.jOfEmpty] = null;
+				left.localPriority = 0;
+				left.path += "-"+left.mat[left.iOfEmpty][left.jOfEmpty-1].getVal()+"L";
+				switch(left.mat[left.iOfEmpty][left.jOfEmpty-1].getColor()) {
+				case 1:
+					left.cost = cost + 1;
+					break;
+				case 2: 
+					left.cost = cost + 20;
+					break;
+				case 3:
+					throw new RuntimeException("ERR: cant move black tile");
+				}
+				left.updateID();
+				return left;
+			}
+			break;
+		case 1:
+			if((iOfEmpty+1)!= rows && mat[iOfEmpty+1][jOfEmpty].getColor() != 3) {
+				State up = deepCopy();
+				up.mat[up.iOfEmpty][up.jOfEmpty] = up.mat[up.iOfEmpty+1][up.jOfEmpty];
+				up.iOfEmpty++;
+				up.mat[up.iOfEmpty][up.jOfEmpty] = null;
+				up.localPriority = 1;
+				up.path += "-"+up.mat[up.iOfEmpty-1][up.jOfEmpty].getVal()+"U";
+				switch(up.mat[up.iOfEmpty-1][up.jOfEmpty].getColor()) {
+				case 1:
+					up.cost = cost + 1;
+					break;
+				case 2: 
+					up.cost = cost + 20;
+					break;
+				case 3:
+					throw new RuntimeException("ERR: cant move black tile");
+				}
+				up.updateID();
+				return up;
+			}
+			break;
+		case 2:
+			if(jOfEmpty!=0 && mat[iOfEmpty][jOfEmpty-1].getColor() != 3) {
+				State right = deepCopy();
+				right.mat[right.iOfEmpty][right.jOfEmpty] = right.mat[right.iOfEmpty][right.jOfEmpty-1];
+				right.jOfEmpty--;
+				right.mat[right.iOfEmpty][right.jOfEmpty] = null;
+				right.localPriority = 2;
+				right.path += "-"+right.mat[right.iOfEmpty][right.jOfEmpty+1].getVal()+"R";
+				switch(right.mat[right.iOfEmpty][right.jOfEmpty+1].getColor()) {
+				case 1:
+					right.cost = cost + 1;
+					break;
+				case 2: 
+					right.cost = cost + 20;
+					break;
+				case 3:
+					throw new RuntimeException("ERR: cant move black tile");
+				}
+				right.updateID();
+				return right;
+			}
+			break;
+		case 3:
+			if(iOfEmpty != 0 && mat[iOfEmpty-1][jOfEmpty].getColor() != 3) {
+				State down = deepCopy();
+				down.mat[down.iOfEmpty][down.jOfEmpty] = down.mat[down.iOfEmpty-1][down.jOfEmpty];
+				down.iOfEmpty--;
+				down.mat[down.iOfEmpty][down.jOfEmpty] = null;
+				down.localPriority = 3;
+				down.path += "-"+down.mat[down.iOfEmpty+1][down.jOfEmpty].getVal()+"D";
+				switch(down.mat[down.iOfEmpty+1][down.jOfEmpty].getColor()) {
+				case 1:
+					down.cost = cost + 1;
+					break;
+				case 2: 
+					down.cost = cost + 30;
+					break;
+				case 3:
+					throw new RuntimeException("ERR: cant move black tile");
+				}
+				down.updateID();
+				return down;
+			}
+			break;
+		default:
+			throw new RuntimeException("ERR: got wrong input to th getChild method, input = "+priority);
+		}
+		return null;
+	}
 }
+
+
+
