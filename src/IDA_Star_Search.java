@@ -5,13 +5,13 @@ import java.util.PriorityQueue;
 import java.util.Stack;
 
 public class IDA_Star_Search implements search_algorithms {
-	
+
 	private State st;
 	private String path = ""; // from the goal state
 	private boolean isWithTime, isWithOpen, hasResult = false;
 	private int num = 1, cost = 0; // cost is the weight of the goal state
 	private long timeToGoal =0;
-	
+
 	public IDA_Star_Search(State first, boolean time, boolean open) {
 		st = first;
 		isWithTime = time;
