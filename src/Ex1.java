@@ -2,15 +2,14 @@
  * this class is the main class which needs to actually run and solve the game.
  */
 import java.io.IOException;
-
+//try to generate now.
 
 public class Ex1 {
-
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
 		ColoredTilePuzzle_AI game = new ColoredTilePuzzle_AI();
-		String path = "input-test.txt";
+		String path = "input.txt";
 		try {
 			game.LoadGame(path);
 			game.solve();

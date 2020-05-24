@@ -74,10 +74,7 @@ public class DFBnB_Search implements search_algorithms {
 						timeToGoal = finishTime - startTime;
 						for(int j =i; j<children.size(); j++)
 							children.remove(i);
-
-					}
-					
-					
+					}	
 				}
 				for(int k = children.size()-1; k>=0; k--) {
 					State son2 = children.get(k);
