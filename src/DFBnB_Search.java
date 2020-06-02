@@ -44,7 +44,6 @@ public class DFBnB_Search implements search_algorithms {
 				updateIteration(children, itr);
 				children.sort(new State_Comparator_Heuristic());
 				num = num + children.size();
-				System.out.println("num = "+num);
 				for(int i =0; i<children.size(); i++) {
 					State son = children.get(i);
 					int f_son = son.getCost() + son.h();
@@ -56,12 +55,12 @@ public class DFBnB_Search implements search_algorithms {
 					}
 					else if(copy!=null && copy.getTag()==1) {
 						children.remove(i);
-//						i--;
+						i--;
 					}
 					else if(copy!=null && copy.getTag()==0) {
 						if(f_son >= copy.getCost() + copy.h()) {
 							children.remove(i);
-//							i--;
+							i--;
 						} else {
 							openList.remove(copy.getId());
 							stack.remove(copy);
