@@ -45,8 +45,10 @@ public class IDA_Star_Search implements search_algorithms {
 						if(son == null) continue;
 						num++;
 						int f_son = son.getCost() + son.h();
+//						System.out.println("my f value: "+f_son);
 						if(f_son > threshold) {
 							minF = Math.min(minF, f_son);
+//							System.out.println("improving.. "+son);
 							continue;
 						}
 						State copy = openList.get(son.getId());
@@ -74,6 +76,7 @@ public class IDA_Star_Search implements search_algorithms {
 					}
 				}
 			}
+//			System.out.println("current t: "+threshold+ ", current minF: "+minF);
 			threshold = minF;
 		}
 	}
