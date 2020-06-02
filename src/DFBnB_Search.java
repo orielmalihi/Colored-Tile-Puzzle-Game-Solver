@@ -26,7 +26,7 @@ public class DFBnB_Search implements search_algorithms {
 		long startTime = new Date().getTime();
 		Hashtable<String, State> openList = new Hashtable<String, State>();
 		Stack<State> stack = new Stack<State>();
-		int currentBest = 700;
+		int currentBest = Integer.MAX_VALUE;
 		openList.put(st.getId(), st);
 		int itr = 0;
 		stack.add(st);
@@ -42,9 +42,9 @@ public class DFBnB_Search implements search_algorithms {
 				stack.add(t);
 				ArrayList<State> children = t.getChildren();
 				updateIteration(children, itr);
-				children.sort(new State_Comparator_Heuristic()); 
+				children.sort(new State_Comparator_Heuristic());
+				num = num + children.size();
 				for(int i =0; i<children.size(); i++) {
-					num++;
 					State son = children.get(i);
 					int f_son = son.getCost() + son.h();
 					State copy = openList.get(son.getId());
@@ -54,12 +54,12 @@ public class DFBnB_Search implements search_algorithms {
 					}
 					else if(copy!=null && copy.getTag()==1) {
 						children.remove(i);
-						i--;
+//						i--;
 					}
 					else if(copy!=null && copy.getTag()==0) {
 						if(f_son >= copy.getCost() + copy.h()) {
 							children.remove(i);
-							i--;
+//							i--;
 						} else {
 							openList.remove(copy.getId());
 							stack.remove(copy);
