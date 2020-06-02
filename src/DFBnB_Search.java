@@ -44,12 +44,14 @@ public class DFBnB_Search implements search_algorithms {
 				updateIteration(children, itr);
 				children.sort(new State_Comparator_Heuristic());
 				num = num + children.size();
+				System.out.println("num = "+num);
 				for(int i =0; i<children.size(); i++) {
 					State son = children.get(i);
 					int f_son = son.getCost() + son.h();
 					State copy = openList.get(son.getId());
 					if(f_son >= currentBest) {
-						for(int j =i; j<children.size(); j++)
+						int size = children.size()-i;
+						for(int j =0; j< size; j++)
 							children.remove(i);
 					}
 					else if(copy!=null && copy.getTag()==1) {
@@ -72,7 +74,8 @@ public class DFBnB_Search implements search_algorithms {
 						hasResult = true;
 						long finishTime = new Date().getTime();
 						timeToGoal = finishTime - startTime;
-						for(int j =i; j<children.size(); j++)
+						int size = children.size()-i;
+						for(int j =0; j<size; j++)
 							children.remove(i);
 					}	
 				}
