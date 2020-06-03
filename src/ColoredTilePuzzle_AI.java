@@ -80,22 +80,32 @@ public class ColoredTilePuzzle_AI {
 		switch(algo) {
 		case "BFS":
 			search_algo = new BFS_Search(firstState, isWithTime, isWithOpen);
+			if(firstState.h()==-1)
+				return;
 			search_algo.solve_game();
 			break;
 		case "DFID":
 			search_algo = new DFID_Search(firstState, isWithTime, isWithOpen);
+			if(firstState.h()==-1)
+				return;
 			search_algo.solve_game();
 			break;
 		case "A*":
 			search_algo = new A_Star_Search(firstState, isWithTime, isWithOpen);
+			if(firstState.h()==-1)
+				return;
 			search_algo.solve_game();
 			break;
 		case "IDA*":
 			search_algo = new IDA_Star_Search(firstState, isWithTime, isWithOpen);
+			if(firstState.h()==-1)
+				return;
 			search_algo.solve_game();
 			break;
 		case "DFBnB":
 			search_algo = new DFBnB_Search(firstState, isWithTime, isWithOpen);
+			if(firstState.h()==-1)
+				return;
 			search_algo.solve_game();
 			break;
 		}

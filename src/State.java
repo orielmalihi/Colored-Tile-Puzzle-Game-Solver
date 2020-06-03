@@ -203,8 +203,11 @@ public class State {
 				if(mat[i][j]!=null && mat[i][j].getVal()!= i*columns + j + 1) {
 					int number = mat[i][j].getVal();
 					int color = mat[i][j].getColor();
-					if(color == 3)
-						throw new RuntimeException("ERR: cant solve this game, got black tile on row "+i+" and column "+j);
+					if(color == 3) {
+						path = "no path";
+						return -1;
+//						throw new RuntimeException("ERR: cant solve this game, got black tile on row "+i+" and column "+j);
+					}
 					int r, c;
 					if(number%columns==0) {
 						r = number/columns -1;
