@@ -29,6 +29,8 @@ public class IDA_Star_Search implements search_algorithms {
 		int threshold = st.h();
 		while(threshold < Integer.MAX_VALUE) {
 			int minF = Integer.MAX_VALUE;
+			st.setTag(0);
+			openList.clear();
 			stack.add(st);
 			openList.put(st.getId(), st);
 			while(!stack.isEmpty()) {
@@ -59,7 +61,8 @@ public class IDA_Star_Search implements search_algorithms {
 							if(f_son < copy.getCost() + copy.h()) {
 								openList.remove(copy.getId());
 								stack.remove(copy);
-							} else {
+							} 
+								else {
 								continue;
 							}
 						}
