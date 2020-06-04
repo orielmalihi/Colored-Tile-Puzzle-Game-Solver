@@ -41,19 +41,18 @@ public class IDA_Star_Search implements search_algorithms {
 					openList.remove(t.getId());
 				} else {
 					t.setTag(1);
-					openList.put(t.getId(), t);
+					stack.add(t);
 					for(int i =0; i<4; i++) {
 						State son = t.getChild(i);
 						if(son == null) continue;
 						num++;
 						int f_son = son.getCost() + son.h();
-//						System.out.println("my f value: "+f_son);
+						State copy = openList.get(son.getId());
 						if(f_son > threshold) {
 							minF = Math.min(minF, f_son);
-//							System.out.println("improving.. "+son);
 							continue;
 						}
-						State copy = openList.get(son.getId());
+						
 						if(copy!=null && copy.getTag()==1) {
 							continue;
 						}
@@ -67,6 +66,7 @@ public class IDA_Star_Search implements search_algorithms {
 							}
 						}
 						if(son.isGoal()) {
+							System.out.println("goal: "+son);
 							cost = son.getCost();
 							path = son.getPath();
 							hasResult = true;
@@ -79,7 +79,6 @@ public class IDA_Star_Search implements search_algorithms {
 					}
 				}
 			}
-//			System.out.println("current t: "+threshold+ ", current minF: "+minF);
 			threshold = minF;
 		}
 	}

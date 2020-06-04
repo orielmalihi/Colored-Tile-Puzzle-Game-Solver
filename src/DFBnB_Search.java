@@ -17,6 +17,12 @@ public class DFBnB_Search implements search_algorithms {
 		isWithTime = time;
 		isWithOpen = open;
 	}
+	
+	public static int atzeret(int n) {
+		if(n==1) return 1;
+		else
+			return n*(atzeret(n-1));
+	}
 
 
 	@Override
@@ -27,6 +33,9 @@ public class DFBnB_Search implements search_algorithms {
 		Hashtable<String, State> openList = new Hashtable<String, State>();
 		Stack<State> stack = new Stack<State>();
 		int currentBest = Integer.MAX_VALUE;
+		int n = st.getColumns()*st.getRows();
+		if(n<=12)
+			currentBest = atzeret(n);
 		openList.put(st.getId(), st);
 		int itr = 0;
 		stack.add(st);

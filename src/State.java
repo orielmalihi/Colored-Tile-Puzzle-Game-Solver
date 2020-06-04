@@ -340,6 +340,14 @@ public class State {
 		}
 		return null;
 	}
+	
+	public int getRows() {
+		return rows;
+	}
+	
+	public int getColumns() {
+		return columns;
+	}
 }
 
 
