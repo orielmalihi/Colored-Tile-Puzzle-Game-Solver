@@ -1,4 +1,4 @@
 2R-8D-5R-1U-8L-2L-6D-5R-1R-7D-4L-1U-2U-8R-7D-4D-1L-2U-5L-6U
-Num: 172310
+Num: 1335
 Cost: 20
-0.577 seconds
+0.031 seconds
