@@ -61,6 +61,7 @@ public class DFBnB_Search implements search_algorithms {
 						int size = children.size()-i;
 						for(int j =0; j< size; j++)
 							children.remove(i);
+						break;
 					}
 					else if(copy!=null && copy.getTag()==1) {
 						children.remove(i);
