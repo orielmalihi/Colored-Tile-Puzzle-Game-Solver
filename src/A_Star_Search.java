@@ -47,6 +47,10 @@ public class A_Star_Search implements search_algorithms {
 			}
 
 			closedList.put(t.getId(), t);
+			String mypath = "1U-5L-7D-2L-3U-6U-8R";
+			if(mypath.equals(t.getPath())) {
+				System.out.println("found it");
+			}
 			for(int i =0; i<4; i++) {
 				State son = t.getChild(i);
 				if(son == null) continue;

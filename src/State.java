@@ -218,10 +218,11 @@ public class State {
 					}
 					int sumr = Math.abs(i - r);
 					int sumc = Math.abs(j - c);
-					sum += sumr + sumc;
+					int sumt = sumr + sumc;
 					if(color==2) {
-						sum *= 30;
+						sumt *= 30;
 					}
+					sum += sumt;
 
 				}
 			}
@@ -260,7 +261,7 @@ public class State {
 					left.cost = cost + 1;
 					break;
 				case 2: 
-					left.cost = cost + 20;
+					left.cost = cost + 30;
 					break;
 				case 3:
 					throw new RuntimeException("ERR: cant move black tile");
@@ -282,7 +283,7 @@ public class State {
 					up.cost = cost + 1;
 					break;
 				case 2: 
-					up.cost = cost + 20;
+					up.cost = cost + 30;
 					break;
 				case 3:
 					throw new RuntimeException("ERR: cant move black tile");
@@ -304,7 +305,7 @@ public class State {
 					right.cost = cost + 1;
 					break;
 				case 2: 
-					right.cost = cost + 20;
+					right.cost = cost + 30;
 					break;
 				case 3:
 					throw new RuntimeException("ERR: cant move black tile");
