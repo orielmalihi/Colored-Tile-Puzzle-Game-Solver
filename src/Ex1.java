@@ -9,7 +9,7 @@ public class Ex1 {
 		// TODO Auto-generated method stub
 		
 		ColoredTilePuzzle_AI game = new ColoredTilePuzzle_AI();
-		String path = "input.txt";
+		String path = "input-test.txt";
 		try {
 			game.LoadGame(path);
 			game.solve();
