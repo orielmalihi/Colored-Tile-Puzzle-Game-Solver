@@ -1,4 +1,4 @@
 1U-5L-7D-2L-3U-6U-8R-7D-5R-4U-7L-8L
-Num: 77
+Num: 5393
 Cost: 128
-0.0 seconds
+0.078 seconds
